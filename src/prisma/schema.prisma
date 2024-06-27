@@ -12,6 +12,8 @@ model Box {
   id    Int      @id @default(autoincrement())
   items Item[]
   tags  String[]
+
+  createdAt DateTime @default(now())
 }
 
 model Item {
