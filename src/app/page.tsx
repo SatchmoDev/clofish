@@ -16,6 +16,7 @@ export default async function Home() {
           return (
             <Link
               href={"/" + box.id}
+              key={box.id}
               className="w-40 rounded border-2 border-gray-500 p-2"
             >
               <p className="mb-2">{box.id.toString().padStart(5, "0")}</p>
