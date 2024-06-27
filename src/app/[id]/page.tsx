@@ -1,6 +1,7 @@
+import ImageOrFail from "@/components/ImageOrFail"
 import { prisma } from "@/lib/prisma"
 import { imager } from "@/utils"
-import Image from "next/image"
+import QR from "./QR"
 
 interface Props {
   params: {
@@ -17,7 +18,7 @@ export default async function Box({ params }: Props) {
   if (!box) throw Error("Box not found")
 
   return (
-    <>
+    <div className="flex flex-col items-center">
       {box.items.map((item, i) => {
         return (
           <p key={i} className="text-lg">
@@ -26,7 +27,8 @@ export default async function Box({ params }: Props) {
         )
       })}
 
-      <Image src={imager(params.id)} alt="Box Image" width={200} height={200} />
-    </>
+      <ImageOrFail url={imager(params.id)} />
+      <QR id={box.id} />
+    </div>
   )
 }
